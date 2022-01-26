@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pelicula/screens/screens.dart';
+import 'package:pelicula/themes/app_themes.dart';
 
 void main() => runApp(const MyApp());
 
@@ -8,9 +9,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: 'Peliculas', initialRoute: 'home', routes: {
-      'home': (_) => const HomeScreen(),
-      'details': (_) => const DetailsScreen()
-    });
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Peliculas',
+        initialRoute: 'home',
+        routes: {
+          'home': (_) => const HomeScreen(),
+          'details': (_) => const DetailsScreen()
+        },
+        theme: AppThemes.lightTheme);
   }
 }
