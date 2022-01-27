@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pelicula/themes/app_themes.dart';
+import 'package:pelicula/widgets/widgets.dart';
 
 class DetailsScreen extends StatelessWidget {
   const DetailsScreen({Key? key}) : super(key: key);
@@ -15,7 +16,13 @@ class DetailsScreen extends StatelessWidget {
       slivers: [
         const _CustomAppBar(),
         SliverList(
-          delegate: SliverChildListDelegate([const _PosterAndTitle()]),
+          delegate: SliverChildListDelegate([
+            const _PosterAndTitle(),
+            const _Overview(),
+            const _Overview(),
+            const _Overview(),
+            CastingCards()
+          ]),
         )
       ],
     ));
@@ -39,6 +46,7 @@ class _CustomAppBar extends StatelessWidget {
               color: Colors.black38,
               width: double.infinity,
               alignment: Alignment.bottomCenter,
+              padding: EdgeInsets.only(bottom: 10),
               child: const Text('movie.title', style: TextStyle(fontSize: 16))),
           background: const FadeInImage(
               placeholder: AssetImage('assets/loading.gif'),
@@ -89,5 +97,19 @@ class _PosterAndTitle extends StatelessWidget {
             )
           ],
         ));
+  }
+}
+
+class _Overview extends StatelessWidget {
+  const _Overview({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+        child: Text(
+            'In veniam culpa id qui incididunt minim in. Aliquip exercitation reprehenderit culpa magna cillum ea et nulla pariatur sint excepteur officia dolor. Mollit officia mollit occaecat excepteur. Culpa non est laborum minim ipsum mollit ut amet quis culpa aliquip deserunt aliquip eiusmod.',
+            textAlign: TextAlign.justify,
+            style: Theme.of(context).textTheme.subtitle1));
   }
 }
